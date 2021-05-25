@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_nav_host"
+    app:startDestination="@id/breakingNewsFragment">
+    <fragment
+        android:id="@+id/breakingNewsFragment"
+        android:name="com.example.habariapp.fragments.BreakingNewsFragment"
+        android:label="BreakingNewsFragment" />
+    <fragment
+        android:id="@+id/savedNewsFragment"
+        android:name="com.example.habariapp.fragments.SavedNewsFragment"
+        android:label="SavedNewsFragment" />
+    <fragment
+        android:id="@+id/searchNewsFragment"
+        android:name="com.example.habariapp.fragments.SearchNewsFragment"
+        android:label="SearchNewsFragment" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.habariapp.fragments.ArticleFragment"
+        android:label="ArticleFragment" />
+</navigation>
