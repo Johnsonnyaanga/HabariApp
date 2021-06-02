@@ -1,5 +1,6 @@
 package com.example.habariapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,7 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticlesViewHolder {
         return ArticlesViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.artcle_view,
+                R.layout.article_view_view,
                 parent,
                 false
             )
@@ -50,8 +51,15 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
     override fun onBindViewHolder(holder: ArticlesViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(article.url).into(ArticleImage)
-            title_article.text = article.title
+            Glide.with(context).load(article.urlToImage).into(ivArticleImage)
+            tvTitle.text = article.title
+            //tvDescription.text = article.description
+            tvPublishedAt.text = article.publishedAt
+            //tvSource.text = article.author
+
+
+
+
         }
     }
 

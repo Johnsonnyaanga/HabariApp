@@ -7,9 +7,7 @@ import androidx.room.PrimaryKey
     tableName = "articles_table"
 )
 data class Article(
-    @PrimaryKey(autoGenerate = true
-    )
-    val id:Int,
+    @PrimaryKey(autoGenerate = true) val id:Int,
     val author: String,
     val content: String,
     val description: String,
