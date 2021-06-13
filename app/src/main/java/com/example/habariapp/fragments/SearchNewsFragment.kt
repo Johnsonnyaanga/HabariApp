@@ -16,6 +16,7 @@ import com.example.habariapp.MainActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel
+import com.example.habariapp.util.ErrorsAndWarnings
 import com.example.habariapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_search_news.*
@@ -72,7 +73,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "An error occured: $message")
+                        ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
                     }
                 }
                 is Resource.Loading -> {
