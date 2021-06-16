@@ -2,6 +2,7 @@ package com.example.habariapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: NewsViewModel
     lateinit var navController: NavController
     lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var tooBarConfiguration: Toolbar
     lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +36,11 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
         navController = findNavController(R.id.nav_host_fragment_cont)
         appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navigation_view.setupWithNavController(navController)
         setupActionBarWithNavController(navController,appBarConfiguration)
+
 
     }
 
