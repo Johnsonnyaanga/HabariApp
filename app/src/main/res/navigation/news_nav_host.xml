@@ -36,4 +36,12 @@
             android:name="article"
             app:argType="com.androiddevs.NewsApp.api.models.Article" />
     </fragment>
+    <fragment
+        android:id="@+id/cryptoNewsFragment"
+        android:name="com.example.habariapp.fragments.CryptoNewsFragment"
+        android:label="CryptoNewsFragment" >
+        <action
+            android:id="@+id/action_cryptoNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 </navigation>

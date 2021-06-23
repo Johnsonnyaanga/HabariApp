@@ -23,5 +23,19 @@ suspend fun getBreakingNews(
         @Query("apiKey") apiKey:String = API_KEY
     ):Response<NewsResponse>
 
+    @GET("v2/top-headlines")
+    suspend fun cryptoNews(
+        @Query("q") cryptoQuery:String = "CryptoCurrency",
+        @Query("page") pageNumber:Int = 1,
+        @Query("apiKey") apiKey:String = API_KEY
+    ):Response<NewsResponse>
+
+    @GET("v2/top-headlines")
+    suspend fun sPortsNews(
+        @Query("q") cryptoQuery:String = "Sports",
+        @Query("page") pageNumber:Int = 1,
+        @Query("apiKey") apiKey:String = API_KEY
+    ):Response<NewsResponse>
+
 
 }

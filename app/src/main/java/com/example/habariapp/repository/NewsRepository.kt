@@ -15,4 +15,9 @@ class NewsRepository(
     suspend fun deleteArticle(article: Article) = db.getArticlesDao().deleteArticle(article)
     fun getAllArticles() = db.getArticlesDao().getAllArticles()
 
+    suspend fun getCryptoNews(pageNumber: Int) =
+        RetrofitInstance.api.cryptoNews(pageNumber = pageNumber)
+    suspend fun sportsNews(pageNumber: Int) =
+        RetrofitInstance.api.sPortsNews(pageNumber = pageNumber)
+
 }

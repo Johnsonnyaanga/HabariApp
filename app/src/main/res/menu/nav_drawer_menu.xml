@@ -11,7 +11,7 @@
         />
     <item
         android:title="CryptoCurrency"
-        android:id="@+id/searchNewsFragment"
+        android:id="@+id/cryptoNewsFragment"
         />
 
 
