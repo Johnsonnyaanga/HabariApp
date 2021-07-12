@@ -47,8 +47,8 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             )
         }
 
-        var job: Job? = null
-        etSearch.addTextChangedListener { editable ->
+/*        var job: Job? = null
+       etSearch.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
                 delay(SEARCH_DELAY)
@@ -58,7 +58,9 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     }
                 }
             }
-        }
+        }*/
+        viewModel.searchNews("Crypto currency")
+
 
         viewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
@@ -81,6 +83,10 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 }
             }
         })
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     private fun hideProgressBar() {

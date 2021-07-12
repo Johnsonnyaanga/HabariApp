@@ -5,11 +5,13 @@
         android:id="@+id/breakingNewsFragment"
         android:icon="@drawable/ic_breaking_news"/>
     <item
-        android:title="Search News"
-        android:id="@+id/searchNewsFragment"
-        android:icon="@drawable/ic_all_news"/>
+        android:title="Sports"
+        android:id="@+id/sportFragment"
+        android:icon="@drawable/ic_all_news"
+        />
+
     <item
-        android:title="Saved News"
+        android:title="Saved"
         android:id="@+id/savedNewsFragment"
         android:icon="@drawable/ic_favorite"/>
 

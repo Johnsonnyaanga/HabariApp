@@ -5,11 +5,12 @@ import android.util.Log
 import android.view.View
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.androiddevs.NewsApp.util.Constants.Companion.QUERY_PAGE_SIZE
+import com.androiddevs.NewsApp.util.Constants
 import com.example.habariapp.MainActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
@@ -17,12 +18,14 @@ import com.example.habariapp.ui.NewsViewModel
 import com.example.habariapp.util.ErrorsAndWarnings
 import com.example.habariapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
+import kotlinx.android.synthetic.main.fragment_sport.*
+import kotlinx.android.synthetic.main.fragment_sport.paginationProgressBar
 
-class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
+class SportFragment : Fragment(R.layout.fragment_sport) {
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
-    val TAG = "BreakingNewsFragment"
+    val TAG = "SportsNewsFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,20 +37,20 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                    R.id.action_breakingNewsFragment_to_articleFragment,
+                    R.id.action_sportFragment_to_articleFragment,
                     bundle
             )
         }
 
-        viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.sportsNews.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
                     Log.d("datar",response.data?.articles.toString())
                     hideProgressBar()
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
-                        val totalPages = newsResponse.totalResults / QUERY_PAGE_SIZE + 2
-                        isLastPage = viewModel.breakingNewsPage == totalPages
+                        val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
+                        isLastPage = viewModel.sportsNewsPage == totalPages
                     }
                 }
                 is Resource.Error -> {
@@ -61,6 +64,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 }
             }
         })
+
+
+
     }
 
     private fun hideProgressBar() {
@@ -89,14 +95,14 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
             val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotAtBeginning = firstVisibleItemPosition >= 0
-            val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
+            val isTotalMoreThanVisible = totalItemCount >= Constants.QUERY_PAGE_SIZE
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
             if(shouldPaginate) {
-                viewModel.getBreakingNews("us")
+                viewModel.getSportsNews("us")
                 isScrolling = false
             } else {
-                rvBreakingNews.setPadding(0, 0, 0, 0)
+                rvSportsNews.setPadding(0, 0, 0, 0)
             }
         }
 
@@ -110,11 +116,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     private fun setupRecyclerView() {
         newsAdapter = NewsAdapter()
-        rvBreakingNews.apply {
+        rvSportsNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
-            addOnScrollListener(this@BreakingNewsFragment.scrollListener)
+            addOnScrollListener(this@SportFragment.scrollListener)
         }
     }
+
+
 
 }

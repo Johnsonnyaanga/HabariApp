@@ -44,4 +44,13 @@
             android:id="@+id/action_cryptoNewsFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="com.example.habariapp.fragments.SportFragment"
+        android:label="fragment_sport"
+        tools:layout="@layout/fragment_sport" >
+        <action
+            android:id="@+id/action_sportFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
 </navigation>

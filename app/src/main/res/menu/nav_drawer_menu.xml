@@ -7,7 +7,7 @@
         />
     <item
         android:title="Sports"
-        android:id="@+id/savedNewsFragment"
+        android:id="@+id/sportFragment"
         />
     <item
         android:title="CryptoCurrency"

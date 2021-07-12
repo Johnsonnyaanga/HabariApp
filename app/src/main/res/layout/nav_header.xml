@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:clickable="true"
+    android:background="@color/purple_700"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <ImageView
+            android:id="@+id/nav_header_imageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/news" />
+
+        <TextView
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="15dp"
+            android:id="@+id/nav_header_textView"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Habari App"
+             />
+</LinearLayout>
+
+</LinearLayout>
