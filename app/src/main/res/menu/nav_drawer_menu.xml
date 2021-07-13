@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Local"
-        android:id="@+id/breakingNewsFragment"
+        android:title="Entertainment"
+        android:id="@+id/entertainmentFragment"
         />
     <item
-        android:title="Sports"
-        android:id="@+id/sportFragment"
+        android:title="Health"
+        android:id="@+id/healthFragment"
         />
     <item
-        android:title="CryptoCurrency"
-        android:id="@+id/cryptoNewsFragment"
+        android:title="Technology"
+        android:id="@+id/technologyFragment"
         />
 
 

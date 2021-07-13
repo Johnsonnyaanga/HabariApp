@@ -7,7 +7,7 @@
     tools:context=".fragments.EntertainmentFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSportsNews"
+        android:id="@+id/rvEntertainmentNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
