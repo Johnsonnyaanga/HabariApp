@@ -1,5 +1,6 @@
 package com.example.habariapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.NewsApp.util.Constants
 import com.example.habariapp.MainActivity
+import com.example.habariapp.MainActivity2
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel
@@ -33,13 +35,18 @@ class SportFragment : Fragment(R.layout.fragment_sport) {
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
+            //startActivity(Intent(requireActivity(), MainActivity2::class.java))
+            val intent = Intent(requireActivity(),MainActivity2::class.java)
+            intent.putExtra("article", it.url)
+            startActivity(intent)
+
+         /*   val bundle = Bundle().apply {
                 putSerializable("article", it)
             }
             findNavController().navigate(
                     R.id.action_sportFragment_to_articleFragment,
                     bundle
-            )
+            )*/
         }
 
         viewModel.sportsNews.observe(viewLifecycleOwner, Observer { response ->

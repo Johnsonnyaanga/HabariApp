@@ -5,10 +5,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
+    <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="10dp"
+        android:id="@+id/admin_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/admin_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/white"
+        app:tabBackground="@color/black"
+        app:tabSelectedTextColor="#2D46D1"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorHeight="4dp"
+        app:tabGravity="fill" />
 
 
-<androidx.drawerlayout.widget.DrawerLayout
+
+    <androidx.drawerlayout.widget.DrawerLayout
     android:layout_height="match_parent"
+        android:visibility="gone"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     tools:context=".MainActivity">
@@ -16,14 +33,14 @@
 
 
 
-    <fragment
+<!--    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nav_host_fragment_cont"
         app:defaultNavHost="true"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/news_nav_host"
-        />
+        />-->
 
 
     <com.google.android.material.navigation.NavigationView
@@ -36,9 +53,12 @@
         android:layout_height="match_parent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:menu="@menu/bottom_navigation_menu"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_alignParentBottom="true"

@@ -1,5 +1,6 @@
 package com.example.habariapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.NewsApp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.habariapp.MainActivity
+import com.example.habariapp.MainActivity2
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel
@@ -30,13 +32,16 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
+            val intent = Intent(requireActivity(), MainActivity2::class.java)
+            intent.putExtra("article", it.url)
+            startActivity(intent)
+        /*    val bundle = Bundle().apply {
                 putSerializable("article", it)
             }
             findNavController().navigate(
                     R.id.action_breakingNewsFragment_to_articleFragment,
                     bundle
-            )
+            )*/
         }
 
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
