@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     var viewPager: ViewPager? = null
     var pagerAdapter: ViewPagerAdapter? = null
-    var Titles = arrayOf<CharSequence>("Health", "Technology","Sports","Entertainment","Breaking news")
+    var Titles = arrayOf<CharSequence>("Breaking news", "Technology","Sports","Entertainment","Health")
     var Numboftabs = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,5 +1,6 @@
 package com.example.habariapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.habariapp.ArticleActivity
 import com.example.habariapp.MainActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
@@ -26,13 +28,18 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
+
+            val intent = Intent(requireActivity(), ArticleActivity::class.java)
+            intent.putExtra("article", it.url)
+            startActivity(intent)
+
+        /*    val bundle = Bundle().apply {
                 putSerializable("article", it)
             }
             findNavController().navigate(
                     R.id.action_savedNewsFragment_to_articleFragment,
                     bundle
-            )
+            )*/
         }
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(

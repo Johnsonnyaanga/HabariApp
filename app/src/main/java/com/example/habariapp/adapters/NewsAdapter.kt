@@ -9,8 +9,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.NewsApp.api.models.Article
 import com.bumptech.glide.Glide
+import com.example.habariapp.MainActivity
 import com.example.habariapp.R
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.artcle_view.view.*
+import kotlinx.android.synthetic.main.artcle_view.view.ivArticleImage
+import kotlinx.android.synthetic.main.artcle_view.view.tvPublishedAt
+import kotlinx.android.synthetic.main.artcle_view.view.tvTitle
+import kotlinx.android.synthetic.main.article_view_view.view.*
 
 class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
 
@@ -61,6 +67,11 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
                 onItemClickListener?.let { it(article) }
             }
         }
+        holder.itemView.save_article.setOnClickListener(View.OnClickListener {
+            (holder.itemView.context as MainActivity).viewModel.saveArticle(article)
+            Snackbar.make(holder.itemView,"Article saved succesifully", Snackbar.LENGTH_SHORT).show()
+
+        })
     }
 
     override fun getItemCount(): Int {
@@ -70,6 +81,8 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
     }
+
+
 
 
 }

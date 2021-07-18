@@ -16,8 +16,7 @@ class ViewPagerAdapter(
         // if the position is 0 we are returning the First tab
         return if (position == 0)
         {
-            HealthFragment()
-
+            BreakingNewsFragment()
         } else if(position==1){
 
             TechnologyFragment()
@@ -28,7 +27,7 @@ class ViewPagerAdapter(
             EntertainmentFragment()
 
         }else{
-            BreakingNewsFragment()
+            HealthFragment()
         }
     }
 

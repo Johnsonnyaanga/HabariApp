@@ -7,12 +7,11 @@ import android.view.View
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.NewsApp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.habariapp.MainActivity
-import com.example.habariapp.MainActivity2
+import com.example.habariapp.ArticleActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel
@@ -32,7 +31,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
-            val intent = Intent(requireActivity(), MainActivity2::class.java)
+            val intent = Intent(requireActivity(), ArticleActivity::class.java)
             intent.putExtra("article", it.url)
             startActivity(intent)
         /*    val bundle = Bundle().apply {

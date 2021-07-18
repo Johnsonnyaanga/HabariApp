@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_article.*
 import kotlinx.android.synthetic.main.fragment_article.webView
 
 
-class MainActivity2 : AppCompatActivity() {
+class ArticleActivity : AppCompatActivity() {
     lateinit var viewModel: NewsViewModel
     val args: ArticleFragmentArgs by navArgs()
 
@@ -50,10 +50,10 @@ class MainActivity2 : AppCompatActivity() {
                 failingUrl: String?
             ) {
                 progress_webView.visibility = View.GONE
-                Toast.makeText(this@MainActivity2, "Could not load your page", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ArticleActivity, "Could not load your page", Toast.LENGTH_SHORT).show()
                 super.onReceivedError(view, errorCode, description, failingUrl)
-                Toast.makeText(this@MainActivity2, "error occured", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@MainActivity2,MainActivity::class.java))
+                Toast.makeText(this@ArticleActivity, "error occured", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@ArticleActivity,MainActivity::class.java))
             }
         }
 

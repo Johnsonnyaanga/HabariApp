@@ -2,19 +2,15 @@ package com.example.habariapp.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AbsListView
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.NewsApp.util.Constants.Companion.QUERY_PAGE_SIZE
-import com.androiddevs.NewsApp.util.Constants.Companion.SEARCH_DELAY
 import com.example.habariapp.MainActivity
-import com.example.habariapp.MainActivity2
+import com.example.habariapp.ArticleActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel
@@ -23,10 +19,6 @@ import com.example.habariapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_search_news.*
 import kotlinx.android.synthetic.main.fragment_search_news.paginationProgressBar
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
@@ -40,7 +32,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
-            val intent = Intent(requireActivity(), MainActivity2::class.java)
+            val intent = Intent(requireActivity(), ArticleActivity::class.java)
             intent.putExtra("article", it.url)
             startActivity(intent)
       /*      val bundle = Bundle().apply {
