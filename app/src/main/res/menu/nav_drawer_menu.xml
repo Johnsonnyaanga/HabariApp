@@ -2,16 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Entertainment"
-        android:id="@+id/entertainmentFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        android:id="@+id/homeFragment"
         />
     <item
-        android:title="Health"
-        android:id="@+id/healthFragment"
+        android:icon="@drawable/ic_bookmark"
+        android:title="Book Marks"
+        android:id="@+id/savedNewsFragment"
         />
     <item
-        android:title="Technology"
-        android:id="@+id/technologyFragment"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"
+        />
+    <item
+        android:title="Share"
+        android:icon="@drawable/ic_share"
         />
 
 

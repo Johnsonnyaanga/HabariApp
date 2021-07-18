@@ -215,6 +215,7 @@ class NewsViewModel(
 
             } else {
                 breakingNews.postValue(Resource.Error("No Internet Connection", null))
+                safeBreakingNewsCall("us")
             }
 
         } catch (t: Throwable) {
