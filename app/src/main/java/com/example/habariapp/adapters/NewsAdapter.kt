@@ -1,9 +1,12 @@
 package com.example.habariapp.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -72,6 +75,13 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
             Snackbar.make(holder.itemView,"Article saved succesifully", Snackbar.LENGTH_SHORT).show()
 
         })
+        holder.itemView.share_article.setOnClickListener{
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type="text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, article.url)
+            holder.itemView.context.startActivity(Intent.createChooser(shareIntent,"send_to)"))
+        }
     }
 
     override fun getItemCount(): Int {

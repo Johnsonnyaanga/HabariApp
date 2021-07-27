@@ -2,9 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="100dp"
     android:clickable="true"
-    android:background="#6543B3"
+    android:background="#2B2929"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="bottom"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="#4D62DA"
             android:text="Habari App"
              />
 </LinearLayout>

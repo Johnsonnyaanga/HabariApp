@@ -32,9 +32,10 @@
         android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         app:headerLayout="@layout/nav_header"
-        android:background="#2B2929"
+        app:itemIconTint="#4D62DA"
+        android:background="@color/white"
         app:menu="@menu/nav_drawer_menu"
-        app:itemTextColor="@color/white"
+        app:itemTextColor="#2B2929"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         android:layout_height="match_parent"/>

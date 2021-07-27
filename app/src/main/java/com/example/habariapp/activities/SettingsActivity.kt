@@ -2,11 +2,11 @@ package com.example.habariapp.activities
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.habariapp.R
 import com.example.habariapp.database.NewsDatabase
@@ -16,6 +16,7 @@ import com.example.habariapp.ui.NewsViewModelFactoryProvider
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_book_marks.*
 import kotlinx.android.synthetic.main.activity_settings.*
+
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var viewModel:NewsViewModel
@@ -43,7 +44,7 @@ class SettingsActivity : AppCompatActivity() {
             intent.data = Uri.parse("mailto:johnsonyaanga@gmail.com")
 
             intent.putExtra(Intent.EXTRA_EMAIL, "")
-            intent.putExtra(Intent.EXTRA_SUBJECT,"")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "")
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             }
@@ -51,12 +52,12 @@ class SettingsActivity : AppCompatActivity() {
 
         //privacy policy agreement
         privacy_policy.setOnClickListener{
-        startActivity(Intent(this,PrivacyPolicyActivity:class.java))
+        startActivity(Intent(this, PrivacyPolicyActivity::class.java))
         }
 
         //got to facebook profile
-        facebook.setOnClickListener{
-
+        linkedin.setOnClickListener{
+            openLinkedInPage("johnson-nyaanga-8349b7174")
         }
         //go to twitter profile
         twitter.setOnClickListener{
@@ -117,5 +118,17 @@ class SettingsActivity : AppCompatActivity() {
             }
         val alert = builder.create()
         alert.show()
+    }
+    fun openLinkedInPage(linkedId: String) {
+        var intent = Intent(Intent.ACTION_VIEW, Uri.parse("linkedin://add/%@$linkedId"))
+        val packageManager: PackageManager = packageManager
+        val list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+        if (list.isEmpty()) {
+            intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("http://www.linkedin.com/profile/view?id=$linkedId")
+            )
+        }
+        startActivity(intent)
     }
 }

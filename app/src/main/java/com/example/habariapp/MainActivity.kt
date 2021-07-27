@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         setContentView(R.layout.activity_main)
         drawerLayout = findViewById(R.id.drawer_layout)
         setSupportActionBar(toolbar)
-        toolbar.setBackgroundColor((Color.BLACK))
+        toolbar.setBackgroundColor((Color.parseColor("#D9000000")))
+        toolbar.setTitleTextColor(Color.parseColor("#CCFFFFFF"))
 
 
         val toggle = ActionBarDrawerToggle(
@@ -113,7 +114,12 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
        }else if(item.itemId == R.id.settings){
            startActivity(Intent(this, SettingsActivity::class.java))
        }else if (item.itemId == R.id.share_app){
-           Toast.makeText(this,"i will share the app",Toast.LENGTH_SHORT).show()
+           val shareIntent = Intent()
+           shareIntent.action = Intent.ACTION_SEND
+           shareIntent.type="text/plain"
+           shareIntent.putExtra(Intent.EXTRA_TEXT, "app playstore download url coming soon")
+           startActivity(Intent.createChooser(shareIntent,"Share_to)"))
+           //Toast.makeText(this,"i will share the app",Toast.LENGTH_SHORT).show()
        }
         return false
     }
