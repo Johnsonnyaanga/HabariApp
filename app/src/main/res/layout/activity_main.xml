@@ -12,20 +12,27 @@
 
 
 
- <fragment
+
+
+<!-- <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nav_host_fragment_cont"
         app:defaultNavHost="true"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/news_nav_host"
-        />
-
+        />-->
+   <include
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       layout="@layout/content_main"
+       />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:background="@color/black"
+        android:layout_width="match_parent"
+        app:headerLayout="@layout/nav_header"
+        android:background="#2B2929"
         app:menu="@menu/nav_drawer_menu"
         app:itemTextColor="@color/white"
         android:fitsSystemWindows="true"
@@ -35,16 +42,6 @@
 
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:menu="@menu/bottom_navigation_menu"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/bottom_nav"
-        />
+
 </androidx.drawerlayout.widget.DrawerLayout>
 

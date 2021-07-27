@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androiddevs.NewsApp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.habariapp.MainActivity
-import com.example.habariapp.ArticleActivity
+import com.example.habariapp.activities.ArticleActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel

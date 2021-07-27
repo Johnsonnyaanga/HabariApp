@@ -12,4 +12,6 @@ interface ArticleDao {
     fun getAllArticles():LiveData<List<Article>>
     @Delete
     suspend fun deleteArticle(article: Article)
+    @Query("DELETE FROM articles_table")
+    suspend fun deleteAllCachedArticles()
 }

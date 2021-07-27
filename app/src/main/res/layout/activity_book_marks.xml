@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.BookMarksActivity">
+<androidx.appcompat.widget.Toolbar
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    app:titleTextColor="@color/white"
+    app:title="Bookmarks"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar_bookmarks"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSavedNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

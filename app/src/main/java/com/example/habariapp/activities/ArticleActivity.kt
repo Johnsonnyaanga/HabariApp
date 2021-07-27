@@ -1,4 +1,4 @@
-package com.example.habariapp
+package com.example.habariapp.activities
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -9,6 +9,8 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
+import com.example.habariapp.MainActivity
+import com.example.habariapp.R
 import com.example.habariapp.fragments.ArticleFragmentArgs
 import com.example.habariapp.ui.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main2.*
@@ -53,7 +55,7 @@ class ArticleActivity : AppCompatActivity() {
                 Toast.makeText(this@ArticleActivity, "Could not load your page", Toast.LENGTH_SHORT).show()
                 super.onReceivedError(view, errorCode, description, failingUrl)
                 Toast.makeText(this@ArticleActivity, "error occured", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@ArticleActivity,MainActivity::class.java))
+                startActivity(Intent(this@ArticleActivity, MainActivity::class.java))
             }
         }
 

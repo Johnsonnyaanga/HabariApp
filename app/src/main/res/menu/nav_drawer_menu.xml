@@ -12,10 +12,12 @@
         android:id="@+id/savedNewsFragment"
         />
     <item
+        android:id="@+id/settings"
         android:title="Settings"
         android:icon="@drawable/ic_settings"
         />
     <item
+        android:id="@+id/share_app"
         android:title="Share"
         android:icon="@drawable/ic_share"
         />

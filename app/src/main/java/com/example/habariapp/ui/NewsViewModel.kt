@@ -206,6 +206,12 @@ class NewsViewModel(
         newsRepository.deleteArticle(article)
     }
 
+    fun deleteAllArticles() {
+        viewModelScope.launch {
+            newsRepository.deleteAllArticles()
+        }
+    }
+
     private suspend fun safeBreakingNewsCall(countryCode: String) {
         breakingNews.postValue(Resource.Loading())
         try {

@@ -2,9 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="80dp"
     android:clickable="true"
-    android:background="@color/purple_700"
+    android:background="#6543B3"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="bottom"
@@ -17,13 +17,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
-        <ImageView
-            android:id="@+id/nav_header_imageView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@mipmap/news" />
 
         <TextView
             android:textSize="20sp"

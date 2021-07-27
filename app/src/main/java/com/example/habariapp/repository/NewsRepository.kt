@@ -33,6 +33,9 @@ class NewsRepository(
     = db.getArticlesDao().deleteArticle(article)
 
     fun getAllArticles() = db.getArticlesDao().getAllArticles()
+    suspend fun deleteAllArticles() {
+        db.getArticlesDao().deleteAllCachedArticles()
+    }
 
 
 }

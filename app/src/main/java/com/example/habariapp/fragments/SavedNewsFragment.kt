@@ -3,16 +3,12 @@ package com.example.habariapp.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.habariapp.ArticleActivity
+import com.example.habariapp.activities.ArticleActivity
 import com.example.habariapp.MainActivity
 import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
@@ -29,9 +25,6 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
-
-
-
 
         newsAdapter.setOnItemClickListener {
 
