@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AbsListView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,9 +62,13 @@ class HealthFragment : Fragment(R.layout.fragment_health) {
                     hideProgressBar()
                     response.message?.let { message ->
                         ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
+                        health_no_net_txt.visibility = VISIBLE
+                        health_retry_btn.visibility = VISIBLE
                     }
                 }
                 is Resource.Loading -> {
+                    health_no_net_txt.visibility = GONE
+                    health_retry_btn.visibility = GONE
                     showProgressBar()
                 }
             }
@@ -70,6 +76,13 @@ class HealthFragment : Fragment(R.layout.fragment_health) {
 
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        health_retry_btn.setOnClickListener(View.OnClickListener {
+            viewModel.getHealthNews("us")
+        })
     }
 
     private fun hideProgressBar() {

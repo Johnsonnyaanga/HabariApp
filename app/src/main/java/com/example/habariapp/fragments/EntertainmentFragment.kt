@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AbsListView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,9 +61,13 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment) {
                     hideProgressBar()
                     response.message?.let { message ->
                         ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
+                        entertainment_no_net_txt.visibility = VISIBLE
+                        entertainment_retry_btn.visibility = VISIBLE
                     }
                 }
                 is Resource.Loading -> {
+                    entertainment_no_net_txt.visibility = GONE
+                    entertainment_retry_btn.visibility = GONE
                     showProgressBar()
                 }
             }
@@ -69,6 +75,13 @@ class EntertainmentFragment : Fragment(R.layout.fragment_entertainment) {
 
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        entertainment_retry_btn.setOnClickListener(View.OnClickListener {
+            viewModel.getEntertainmentNews("us")
+        })
     }
 
     private fun hideProgressBar() {

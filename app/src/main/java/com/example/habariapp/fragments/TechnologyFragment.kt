@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AbsListView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,9 +60,13 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology) {
                     hideProgressBar()
                     response.message?.let { message ->
                         ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
+                        tech_retry_btn.visibility = VISIBLE
+                        tech_no_net_txt.visibility = VISIBLE
                     }
                 }
                 is Resource.Loading -> {
+                    tech_retry_btn.visibility = GONE
+                    tech_no_net_txt.visibility = GONE
                     showProgressBar()
                 }
             }
@@ -68,6 +74,13 @@ class TechnologyFragment : Fragment(R.layout.fragment_technology) {
 
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tech_retry_btn.setOnClickListener(View.OnClickListener {
+            viewModel.getTechnologyNews("us")
+        })
     }
 
     private fun hideProgressBar() {

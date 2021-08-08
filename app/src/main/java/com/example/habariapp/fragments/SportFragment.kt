@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -62,9 +64,13 @@ class SportFragment : Fragment(R.layout.fragment_sport) {
                     hideProgressBar()
                     response.message?.let { message ->
                         ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
+                        sports_no_net_txt.visibility = VISIBLE
+                        sports_retry_btn.visibility = VISIBLE
                     }
                 }
                 is Resource.Loading -> {
+                    sports_no_net_txt.visibility = GONE
+                    sports_retry_btn.visibility = GONE
                     showProgressBar()
                 }
             }
@@ -77,6 +83,13 @@ class SportFragment : Fragment(R.layout.fragment_sport) {
     private fun hideProgressBar() {
         paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sports_retry_btn.setOnClickListener(View.OnClickListener {
+            viewModel.getSportsNews("us")
+        })
     }
 
     private fun showProgressBar() {
