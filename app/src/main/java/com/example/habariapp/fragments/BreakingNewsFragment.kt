@@ -56,6 +56,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
+
                     Log.d("datar",response.data?.articles.toString())
                     hideProgressBar()
                     response.data?.let { newsResponse ->
@@ -68,11 +69,15 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     hideProgressBar()
                     response.message?.let { message ->
                         ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
-                        //materialButton.visibility = VISIBLE
+                        no_net_txt.visibility = VISIBLE
+                        retry_btn.visibility = VISIBLE
+
 
                     }
                 }
                 is Resource.Loading -> {
+                    no_net_txt.visibility = GONE
+                    retry_btn.visibility = GONE
                     showProgressBar()
                 }
             }
@@ -143,6 +148,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             Toast.makeText(requireActivity(),"There is no internet connection, try again",Toast.LENGTH_SHORT).show()
         }
     }*/
+
+    override fun onResume() {
+        super.onResume()
+        retry_btn.setOnClickListener(View.OnClickListener {
+            viewModel.getBreakingNews("us")
+        })
+    }
 
 
     @Throws(InterruptedException::class, IOException::class)
