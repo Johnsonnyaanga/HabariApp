@@ -10,10 +10,12 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.androiddevs.NewsApp.api.models.Article
 import com.bumptech.glide.Glide
 import com.example.habariapp.MainActivity
 import com.example.habariapp.R
+import com.example.habariapp.util.InternetCheck
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.artcle_view.view.*
 import kotlinx.android.synthetic.main.artcle_view.view.ivArticleImage
@@ -47,6 +49,8 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
 
 
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticlesViewHolder {
         return ArticlesViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -58,10 +62,19 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticlesViewHolder>() {
     }
     private var onItemClickListener: ((Article) -> Unit)? = null
 
+
     override fun onBindViewHolder(holder: ArticlesViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(context).load(article.urlToImage).into(ivArticleImage)
+            val circularProgressDrawable = CircularProgressDrawable(context)
+            circularProgressDrawable.strokeWidth = 5f
+            circularProgressDrawable.centerRadius = 30f
+            circularProgressDrawable.start()
+
+            Glide.with(context)
+                    .load(article.urlToImage)
+                    .placeholder(circularProgressDrawable)
+                    .into(ivArticleImage)
             tvTitle.text = article.title
             //tvDescription.text = article.description
             tvPublishedAt.text = article.publishedAt

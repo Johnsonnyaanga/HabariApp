@@ -13,7 +13,10 @@ import com.example.habariapp.MainActivity
 import com.example.habariapp.R
 import com.example.habariapp.fragments.ArticleFragmentArgs
 import com.example.habariapp.ui.NewsViewModel
-import kotlinx.android.synthetic.main.activity_main2.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import kotlinx.android.synthetic.main.activity_article.*
+import kotlinx.android.synthetic.main.activity_article.*
 import kotlinx.android.synthetic.main.fragment_article.*
 import kotlinx.android.synthetic.main.fragment_article.webView
 
@@ -24,8 +27,11 @@ class ArticleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_article)
         progress_webView.visibility = View.VISIBLE
+        MobileAds.initialize(this@ArticleActivity)
+        val adRequest = AdRequest.Builder().build()
+        adView_Banner.loadAd(adRequest)
 
         //val main = MainActivity()
         //viewModel = main.viewModel

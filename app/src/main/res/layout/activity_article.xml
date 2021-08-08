@@ -6,11 +6,25 @@
     android:id="@+id/parent1"
     android:layout_height="match_parent"
     tools:context=".activities.ArticleActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Article"
+        app:titleTextColor="@color/white" />
 
     <WebView
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_article"
         android:id="@+id/webView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp" />
 
     <ProgressBar
         android:id="@+id/progress_webView"
@@ -27,9 +41,21 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_favorite"
         app:fabSize="normal"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="82dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_Banner"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

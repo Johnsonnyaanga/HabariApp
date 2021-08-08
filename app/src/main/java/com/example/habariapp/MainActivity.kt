@@ -3,7 +3,11 @@ package com.example.habariapp
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,16 +25,23 @@ import com.example.habariapp.database.NewsDatabase
 import com.example.habariapp.repository.NewsRepository
 import com.example.habariapp.ui.NewsViewModel
 import com.example.habariapp.ui.NewsViewModelFactoryProvider
+import com.example.habariapp.util.InternetCheck
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.io.IOException
 
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     lateinit var viewModel: NewsViewModel
     lateinit var navController: NavController
     lateinit var drawerLayout: DrawerLayout
+    private var mInterstitialAd: InterstitialAd? = null
     var actionBarDrawerToggle: ActionBarDrawerToggle? = null
 
     var viewPager: ViewPager? = null
@@ -54,6 +65,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         toolbar.setBackgroundColor((Color.parseColor("#D9000000")))
         toolbar.setTitleTextColor(Color.parseColor("#CCFFFFFF"))
 
+        val internet = InternetCheck(application)
+
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.nav_open,
@@ -63,6 +76,21 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         toggle.syncState()
 
         navigation_view.setNavigationItemSelectedListener(this)
+
+
+      /*  //admob
+        var adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712",
+            adRequest, object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d("TAG", adError?.message)
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    mInterstitialAd = interstitialAd
+                }
+            })*/
 
 
 
@@ -110,10 +138,17 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawerLayout.closeDrawer(GravityCompat.START)
        if (item.itemId == R.id.savedNewsFragment){
+           showAds()
            startActivity(Intent(this, BookMarksActivity::class.java))
+           overridePendingTransition(0,0)
+
        }else if(item.itemId == R.id.settings){
+          showAds()
            startActivity(Intent(this, SettingsActivity::class.java))
+           overridePendingTransition(0,0)
+
        }else if (item.itemId == R.id.share_app){
+           showAds()
            val shareIntent = Intent()
            shareIntent.action = Intent.ACTION_SEND
            shareIntent.type="text/plain"
@@ -122,6 +157,31 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
            //Toast.makeText(this,"i will share the app",Toast.LENGTH_SHORT).show()
        }
         return false
+    }
+
+    fun showAds(){
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.")
+        }
+    }
+
+   /* fun checkInternet(){
+        if(isConnected()){
+            internet_iko.visibility = VISIBLE
+            internet_haiko.visibility = GONE
+        }else{
+            internet_iko.visibility = GONE
+            internet_haiko.visibility = VISIBLE
+        }
+    }*/
+
+
+    @Throws(InterruptedException::class, IOException::class)
+    fun isConnected(): Boolean {
+        val command = "ping -c 1 google.com"
+        return Runtime.getRuntime().exec(command).waitFor() == 0
     }
 
 

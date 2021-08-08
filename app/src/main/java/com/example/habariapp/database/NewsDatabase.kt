@@ -30,6 +30,6 @@ abstract class NewsDatabase:RoomDatabase() {
                         context.applicationContext,
                         NewsDatabase::class.java,
                         "article_db.db"
-                ).build()
+                ).allowMainThreadQueries().build()
     }
 }

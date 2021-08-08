@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +19,10 @@ import com.example.habariapp.R
 import com.example.habariapp.adapters.NewsAdapter
 import com.example.habariapp.ui.NewsViewModel
 import com.example.habariapp.util.ErrorsAndWarnings
+import com.example.habariapp.util.InternetCheck
 import com.example.habariapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
+import java.io.IOException
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
@@ -29,6 +34,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+
+
+
+
 
         newsAdapter.setOnItemClickListener {
             val intent = Intent(requireActivity(), ArticleActivity::class.java)
@@ -59,6 +68,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     hideProgressBar()
                     response.message?.let { message ->
                         ErrorsAndWarnings(requireContext()).toastMessageLong("an Error Occured: $message")
+                        //materialButton.visibility = VISIBLE
+
                     }
                 }
                 is Resource.Loading -> {
@@ -122,4 +133,32 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         }
     }
 
+    /*fun checkInternet(){
+        if(isConnected()){
+            yes_net.visibility = VISIBLE
+            no_net.visibility = GONE
+        }else{
+            no_net.visibility = VISIBLE
+            yes_net.visibility = GONE
+            Toast.makeText(requireActivity(),"There is no internet connection, try again",Toast.LENGTH_SHORT).show()
+        }
+    }*/
+
+
+    @Throws(InterruptedException::class, IOException::class)
+    fun isConnected(): Boolean {
+        val command = "ping -c 1 google.com"
+        return Runtime.getRuntime().exec(command).waitFor() == 0
+    }
+
+
+    val internetCheck = activity?.application?.let { InternetCheck(it) }
+
+   /* override fun onResume() {
+        super.onResume()
+        checkInternet()
+        materialButton.setOnClickListener(View.OnClickListener {
+            checkInternet()
+        })
+    }*/
 }

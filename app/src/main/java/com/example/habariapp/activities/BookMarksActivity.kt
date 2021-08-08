@@ -30,6 +30,10 @@ class BookMarksActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_marks)
 
+        //back naviagtion
+        back_bookmarks.setOnClickListener(View.OnClickListener {
+            finish()
+        })
 
         val newsRepository = NewsRepository(NewsDatabase(this))
         val newsViewModelFactoryProvider = NewsViewModelFactoryProvider(application, newsRepository)

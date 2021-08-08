@@ -13,16 +13,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HabariApp">
-        <activity android:name=".activities.PrivacyPolicyActivity"></activity>
-        <activity android:name=".activities.SettingsActivity" />
-        <activity android:name=".activities.BookMarksActivity" />
-        <activity android:name=".activities.ArticleActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5536381618123230~1639309443" />
+
+        <activity android:name=".activities.PrivacyPolicyActivity" />
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.BookMarksActivity" />
+        <activity android:name=".activities.ArticleActivity" />
+        <activity android:name=".MainActivity">
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
     </application>
 

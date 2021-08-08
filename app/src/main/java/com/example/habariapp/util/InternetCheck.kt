@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.habariapp.HabariApplication
 
 class InternetCheck(application: Application) :AndroidViewModel(application) {
+
     fun hasInternetConnection():Boolean{
         val conectivityManager = getApplication<HabariApplication>().getSystemService(
                 Context.CONNECTIVITY_SERVICE
