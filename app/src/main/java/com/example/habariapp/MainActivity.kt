@@ -1,5 +1,4 @@
-package com.example.habariapp
-
+import com.example.habariapp.R
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
