@@ -86,6 +86,36 @@ and default parameters.
 - [Material Design](https://material.io/develop/android/docs/getting-started/) - Build awesome beautiful UIs.
 - [Glide](https://github.com/bumptech/glide)- Image Library from loading images from the database and cacheing in memory.
 
+## Demo
+
+### Navigation Drawer Screen
+<p >
+<img  src="assets/nav.jpeg" width = "240px" height = "340px">
+ </p><br>
+ 
+### ViewPager Fragments's Screens
+<p>
+<img  src="assets/breaking.jpeg" width = "240px" height = "340px">
+<img  src="assets/sports.jpeg" width = "240px" height = "340px">
+ </p>
+ 
+ ### Article Screen
+<p >
+<img  src="assets/article.jpeg" width = "240px" height = "340px">
+ </p><br>
+ 
+ ### Bookmark Screen
+<p >
+<img  src="assets/entertainment.jpeg" width = "240px" height = "340px">
+ </p><br>
+
+ ### Settings Screen
+<p >
+<img  src="assets/settings.jpeg" width = "240px" height = "340px">
+ </p><br>
+
+
+
 
 
 
